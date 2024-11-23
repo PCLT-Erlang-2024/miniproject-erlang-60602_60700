@@ -1,0 +1,30 @@
+Group:
+    Rafael Martins 60602
+    Rafael Pereira 60700
+
+
+Simple explanation of our system:
+
+In task 1 we decided to create one conveyor for each truck, meaning each conveyor only attends to one truck.
+We represent our conveyors through a producer function that constantly sends new messages with the package size to their designated truck.
+
+To simulate the loading of the trucks, we created a load_truck function that will receive the current truck leftover capacity as an argument. This function will then wait
+to receive a message from its conveyor with the size of the package to be loaded onto the truck. Once the message arrives, the function verifies the new capacity of the truck
+in case it loaded the received package. If the new capacity is higher than 0 (i.e. still has space left) the truck loads the package and recursively calls the load_truck function with the
+new capacity; if the truck only has space for the received packace (i.e. new capacity is 0), the truck loads the package and calls load_truck function with the maximum capacity
+of the trucks and with a new TRUCK_ID based on the number of trucks in the system, representing the dispatching of the previous truck and the subsequent creation of a new empty
+truck.
+
+Finally, we use a spawner function that will initialize the threads that will concurrently run each of the load_truck and producer instances based on the number of trucks in the system.
+This spawner function will first create the load_truck thread and store its process id that will then be passed to the producer function in order to send the messages containing the 
+packages size.
+
+In this program we can define some values through our input, such as the number of trucks (and, therefore, the number of conveyors), the capacity of each truck and the package size.
+
+Usage:
+
+To run our program we use the following commands -
+
+    To compile the code we use: c(task1).
+    To run the code we use: task1:start(N_TRUCKS, MAX_CAPACITY, PCK_SIZE) where N_TRUCKS represents the number of trucks in the system, MAX_CAPACITY represents the capacity of each truck
+    and PCK_SIZE represents the size of each package.
