@@ -6,7 +6,9 @@ Group:
 Simple explanation of our system:
 
 In task 1 we decided to create one conveyor for each truck, meaning each conveyor only attends to one truck.
-We represent our conveyors through a producer function that constantly sends new messages with the package size to their designated truck.
+We represent our conveyors through a producer function that repeatedly sends new messages with the package size to their designated truck. These messages also contain the producer's 
+process ID in order for trucks to send an acknowledgment every time a package is received. This way, producers send messages synchronously, meaning they only send a new package
+once the previous one was loaded. 
 
 To simulate the loading of the trucks, we created a load_truck function that will receive the current truck leftover capacity as an argument. This function will then wait
 to receive a message from its conveyor with the size of the package to be loaded onto the truck. Once the message arrives, the function verifies the new capacity of the truck

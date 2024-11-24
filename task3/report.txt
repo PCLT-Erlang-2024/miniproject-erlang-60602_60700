@@ -1,0 +1,19 @@
+Group:
+    Rafael Martins 60602
+    Rafael Pereira 60700
+
+
+To extend task 2 with a non-zero time for replacing trucks, we simply added a sleep function that will be called any time a truck does not have enough space for another package. When a truck
+is to be dispatched, the sleep function present in the timer module provided in Erlang will be called with a random Sleep_Time. This will stop the designated thread for 1 to 1000 milliseconds,
+simulating the time a truck needs to be replaced.
+
+Our program ensures that conveyors pause their operation while waiting for a truck to be replaced through the use of the acknowledgment system described in task1's report.
+By sending the acknowledgment only after the sleep function is called, our system ensures that conveyors wait for the trucks to be replaced, maintaining correctness.
+
+Usage:
+
+To run our program we use the following commands -
+
+    To compile the code we use: c(task3).
+    To run the code we use: task3:start(N_TRUCKS, MAX_CAPACITY, MAX_PCK_SIZE) where N_TRUCKS represents the number of trucks in the system, MAX_CAPACITY represents the capacity of each truck
+    and MAX_PCK_SIZE represents the maximum size of each package.

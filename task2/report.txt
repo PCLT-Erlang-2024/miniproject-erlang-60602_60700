@@ -6,7 +6,7 @@ Group:
 To extend task 1 with randomized package sizes, we simply used the rand module provided by Erlang. Each time the producer is to send a package to the truck, it will create
 a random integer between 1 and the maximum package size defined in the input of the program. This way, every package will have a random size.
 
-In the load_truck function we added a verification to check whether the size of the package is smaller than the maximum capacity of the trucks. If it is not, we simply 
+In the load_truck function we added a verification to check whether the size of the package is bigger than the maximum capacity of the trucks. If it is, we simply 
 assume the package cannot be loaded onto any truck and drop the package. This verification is useful to deal with cases where the user defines the maximum size of a package
 to be higher than the maximum capacity of the trucks, helping the system maintain a correct state and not load packages into trucks if they don't fit. 
 
